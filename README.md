@@ -19,7 +19,6 @@ https://github.com/nicb/fortelib
 
 ## LICENSE
 
-    *fortelib*
     Copyright (C) 2015  Nicola Bernardini, Anna Terzaroli
 
     This program is free software; you can redistribute it and/or modify
