@@ -11,7 +11,7 @@ This is still a work in progress, please come back to see more things.
 
 ## Authors
 
-Nicola Bernardini ([[nicb](https://github.com/nicb)]), Anna Terzaroli ([[aterza](https://github.com/aterza)])
+Nicola Bernardini ([nicb](https://github.com/nicb)), Anna Terzaroli ([aterza](https://github.com/aterza))
 
 ## URL
 
