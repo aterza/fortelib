@@ -1,6 +1,7 @@
 # fortelib
 
-[![Join the chat at https://gitter.im/nicb/fortelib](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nicb/fortelib?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/nicb/fortelib](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nicb/fortelib?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://semaphoreci.com/api/v1/projects/48fef80f-5d2a-4512-a911-cfbe0cbea8cf/460017/badge.svg)](https://semaphoreci.com/nicb/fortelib)      
+
 
 A Ruby gem library to handle Forte Prime set and derived materials
 
