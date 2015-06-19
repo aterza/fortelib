@@ -4,6 +4,8 @@ class CreatePrimeForms < ActiveRecord::Migration
       t.integer :cardinal
 			t.integer :ordinal
 			t.string  :sequence
+			t.string :vector
+			t.integer :distinct_forms, null: false, default: 24
       t.timestamps null: false
     end
   end

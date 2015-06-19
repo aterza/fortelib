@@ -17,8 +17,10 @@ ActiveRecord::Schema.define(version: 20150612163752) do
     t.integer  "cardinal"
     t.integer  "ordinal"
     t.string   "sequence"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "vector"
+    t.integer  "distinct_forms", default: 24, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
 end
