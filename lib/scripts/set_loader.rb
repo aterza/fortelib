@@ -18,14 +18,13 @@ module Scripts
     def set_loader
       File.open(SET_DATA, 'r') do
         |fh| 
-        while (fh.eof?)
+        while (!fh.eof?)
           line = fh.gets
           next unless line
           line.chomp!
           (first, vector) = line.split(':')             # split vector from first part
           (name, pf) = first.split(']')                 # split first part into name and normal form
           pf.sub!(/\((.*)\)/, '\1')                     # remove parenthesis from normal form
-          pf = pf.split(',').map {|s| s.to_i}           # convert normal form into array
           name.sub!('[', '')                            # remove starting square bracket from name
           (card, ord) = name.split('-')                 # split name into cardinal and ordinal
           card = card.to_i                              # convert cardinal into integer
