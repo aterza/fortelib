@@ -34,8 +34,12 @@ class PrimeForm < ActiveRecord::Base
       nt = perms.sort {|a, b|(a.last-a.first)<=>(b.last-b.first)}.first
       nt = nt.map{|n| n-nt.first}
       if card>2 && ((nt.first-nt.second).abs > (nt.last-nt[nt.size-2]).abs)
-        diffs = []
-        nt[0..-2].each_index {|n, idx| diffs << (n - nt[idx+1]).abs}
+        diffs = []        
+        nt.each_index do 
+          |n, idx| 
+          diffs << (n - nt[idx+1]).abs
+          break if idx > nt.size-2
+        end
         diffs.reverse!
         nt = [0]
         diffs.each_index {|n, idx| nt << (nt[idx] + n)}
