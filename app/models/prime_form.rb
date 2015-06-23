@@ -36,13 +36,13 @@ class PrimeForm < ActiveRecord::Base
       if card>2 && ((nt.first-nt.second).abs > (nt.last-nt[nt.size-2]).abs)
         diffs = []        
         nt.each_index do 
-          |n, idx| 
-          diffs << (n - nt[idx+1]).abs
+          |idx| 
           break if idx > nt.size-2
+          diffs << (nt[idx] - nt[idx+1]).abs
         end
         diffs.reverse!
         nt = [0]
-        diffs.each_index {|n, idx| nt << (nt[idx] + n)}
+        diffs.each_index {|idx| nt << (nt[idx] + diffs[idx])}
       end    
 			match_prime_form(nt, seq)
     end
