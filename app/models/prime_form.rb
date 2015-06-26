@@ -2,11 +2,15 @@ class PrimeForm < ActiveRecord::Base
 
   attr_accessor :input_sequence
   
+  validates :sequence, uniqueness: true, strict: true
+  validates :cardinal, uniqueness: true, if: Proc.new { |pf| PrimeForm.where('cardinal = ? and ordinal = ?', pf.cardinal, pf.ordinal).count > 0 }
+  validates :ordinal, uniqueness: true, if: Proc.new { |pf| PrimeForm.where('cardinal = ? and ordinal = ?', pf.cardinal, pf.ordinal).count > 0 }
+  
   def name
     [self.cardinal.to_s, self.ordinal.to_s].join('-')  
   end
   
-  def sequence
+  def sequence_array
     self.read_attribute('sequence').split(',').map {|s| s.to_i}  
   end
   
