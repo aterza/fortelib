@@ -2,18 +2,44 @@ class PrimeForm < ActiveRecord::Base
 
   attr_accessor :input_sequence
   
-  validates :sequence, uniqueness: true, strict: true
-  validates :cardinal, uniqueness: true, if: Proc.new { |pf| PrimeForm.where('cardinal = ? and ordinal = ?', pf.cardinal, pf.ordinal).count > 0 }
-  validates :ordinal, uniqueness: true, if: Proc.new { |pf| PrimeForm.where('cardinal = ? and ordinal = ?', pf.cardinal, pf.ordinal).count > 0 }
+  #
+  # <tt>SetValidator</tt>
+  #
+  # allows validation of sets combining both cardinal and ordinal values
+  #
+  class SetValidator < ActiveModel::EachValidator
+
+    def validate_each(record, attribute, value)
+      record.errors.add attribute, "duplicates set name #{record.name}" if PrimeForm.where('cardinal = ? and ordinal = ?', record.cardinal, record.ordinal).count > 0
+    end
+
+  end
   
+  validates :sequence, presence: true, uniqueness: true, strict: true
+  validates :cardinal, :ordinal, presence: true, strict: true
+	validates :cardinal, :ordinal, set: true # this should just invalidate the model
+  validates :vector, presence: true, strict: true
+  
+  #
+  # +name+
+  #
+  # returns the name of the set, for ex.: '8-22' for cardinal: 8 and ordinal: 22
+	#
+	# TODO: should take into account special forms: 'Z' sets, 'B' sets, '*' sets, etc.
+  #
   def name
     [self.cardinal.to_s, self.ordinal.to_s].join('-')  
   end
   
+  #
+  # <tt>sequence_array</tt>
+  #
+  # returns the sequence in numeric integer array form
+  #
   def sequence_array
     self.read_attribute('sequence').split(',').map {|s| s.to_i}  
   end
-  
+
   class << self 
   
     def search(arg)
@@ -48,7 +74,7 @@ class PrimeForm < ActiveRecord::Base
         nt = [0]
         diffs.each_index {|idx| nt << (nt[idx] + diffs[idx])}
       end    
-			match_prime_form(nt, seq)
+      match_prime_form(nt, seq)
     end
     
     class PrimeFormNotFound < StandardError; end

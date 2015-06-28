@@ -43,3 +43,7 @@ group :development, :test do
   gem 'spring'
 end
 
+#
+# added because of Code Climate
+#
+gem "codeclimate-test-reporter", group: :test, require: nil

@@ -33,7 +33,7 @@ module Scripts
             df = ord.sub(/\A.*\((.*)\)/, '\1').to_i     # then separate the number of distinct forms
             ord.sub!(/\(.*$/, '')                       # from the ordinal number
           end
-          PrimeForm.create(cardinal: card, ordinal: ord, sequence: pf, vector: vector, distinct_forms: df)
+          PrimeForm.create!(cardinal: card, ordinal: ord, sequence: pf, vector: vector, distinct_forms: df)
         end
       end
     end

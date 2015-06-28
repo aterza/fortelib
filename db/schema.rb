@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(version: 20150612163752) do
 
   create_table "prime_forms", force: :cascade do |t|
-    t.integer  "cardinal"
-    t.integer  "ordinal"
-    t.string   "sequence"
-    t.string   "vector"
+    t.integer  "cardinal",                    null: false
+    t.string   "ordinal",                     null: false
+    t.string   "sequence",                    null: false
+    t.string   "vector",                      null: false
     t.integer  "distinct_forms", default: 24, null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
