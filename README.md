@@ -1,9 +1,6 @@
 # fortelib
 
-[![Join the chat at https://gitter.im/nicb/fortelib](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nicb/fortelib?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://semaphoreci.com/api/v1/projects/48fef80f-5d2a-4512-a911-cfbe0cbea8cf/460017/badge.svg)](https://semaphoreci.com/nicb/fortelib)      
-[![Code Climate](https://codeclimate.com/github/nicb/fortelib/badges/gpa.svg)](https://codeclimate.com/github/nicb/fortelib)
-[![Test Coverage](https://codeclimate.com/github/nicb/fortelib/badges/coverage.svg)](https://codeclimate.com/github/nicb/fortelib/coverage)
+[![Join the chat at https://gitter.im/nicb/fortelib](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nicb/fortelib?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://semaphoreci.com/api/v1/projects/48fef80f-5d2a-4512-a911-cfbe0cbea8cf/460017/badge.svg)](https://semaphoreci.com/nicb/fortelib) [![Code Climate](https://codeclimate.com/github/nicb/fortelib/badges/gpa.svg)](https://codeclimate.com/github/nicb/fortelib) [![Test Coverage](https://codeclimate.com/github/nicb/fortelib/badges/coverage.svg)](https://codeclimate.com/github/nicb/fortelib/coverage)
 
 
 A Ruby gem library to handle Forte Prime set and derived materials
