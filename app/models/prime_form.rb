@@ -17,15 +17,15 @@ class PrimeForm < ActiveRecord::Base
   
   validates :sequence, presence: true, uniqueness: true, strict: true
   validates :cardinal, :ordinal, presence: true, strict: true
-	validates :cardinal, :ordinal, set: true # this should just invalidate the model
+  validates :cardinal, :ordinal, set: true # this should just invalidate the model
   validates :vector, presence: true, strict: true
   
   #
   # +name+
   #
   # returns the name of the set, for ex.: '8-22' for cardinal: 8 and ordinal: 22
-	#
-	# TODO: should take into account special forms: 'Z' sets, 'B' sets, '*' sets, etc.
+  #
+  # TODO: should take into account special forms: 'Z' sets, 'B' sets, '*' sets, etc.
   #
   def name
     [self.cardinal.to_s, self.ordinal.to_s].join('-')  
