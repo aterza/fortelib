@@ -2,23 +2,9 @@ class PrimeForm < ActiveRecord::Base
 
   attr_accessor :input_sequence
   
-  #
-  # <tt>SetValidator</tt>
-  #
-  # allows validation of sets combining both cardinal and ordinal values
-  #
-  class SetValidator < ActiveModel::EachValidator
-
-    def validate_each(record, attribute, value)
-      record.errors.add attribute, "duplicates set name #{record.name}" if PrimeForm.where('cardinal = ? and ordinal = ?', record.cardinal, record.ordinal).count > 0
-    end
-
-  end
-  
-  validates :sequence, presence: true, uniqueness: true, strict: true
-  validates :cardinal, :ordinal, presence: true, strict: true
-  validates :cardinal, :ordinal, set: true # this should just invalidate the model
-  validates :vector, presence: true, strict: true
+  validates :sequence, uniqueness: true, strict: true
+  validates :cardinal, :ordinal, :sequence, :vector, presence: true, strict: true
+  validates :ordinal, uniqueness: { scope: :cardinal } # this should just invalidate the model (non-strict)
   
   #
   # +name+
