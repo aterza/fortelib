@@ -48,20 +48,37 @@ class PrimeForm < ActiveRecord::Base
         lr[lr.size-1] = lr.last+12
         perms << lr
       end   
-      nt = perms.sort {|a, b|(a.last-a.first)<=>(b.last-b.first)}.first
+      nt = perms.sort {|a, b|(a.last-a.first)<=>(b.last-b.first)}.first     
       nt = nt.map{|n| n-nt.first}
-      if card>2 && ((nt.first-nt.second).abs > (nt.last-nt[nt.size-2]).abs)
-        diffs = []        
-        nt.each_index do 
+      diffs = build_diffs(nt) 
+      diffs = sort_diffs(diffs)
+      nt = [0]
+      diffs.each_index {|idx| nt << (nt[idx] + diffs[idx])}
+      match_prime_form(nt, seq)
+    end
+    
+    def build_diffs(nt)
+      diffs = []
+      nt.each_index do 
           |idx| 
           break if idx > nt.size-2
           diffs << (nt[idx] - nt[idx+1]).abs
+      end
+      diffs 
+    end
+    
+    def sort_diffs(diffs)
+      res = diffs
+      if diffs.size > 1 
+        if diffs.first > diffs.last
+          res = diffs.reverse
+        elsif diffs.first == diffs.last
+          f = diffs.first
+          l = diffs.last
+          res = [f, sort_diffs(diffs[1..-2]), l].flatten
         end
-        diffs.reverse!
-        nt = [0]
-        diffs.each_index {|idx| nt << (nt[idx] + diffs[idx])}
-      end    
-      match_prime_form(nt, seq)
+      end
+      res
     end
     
     def match_prime_form(nf, seq)
