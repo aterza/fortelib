@@ -25,6 +25,8 @@ class PrimeForm < ActiveRecord::Base
   def sequence_array
     self.read_attribute('sequence').split(',').map {|s| s.to_i}  
   end
+    
+  class PrimeFormNotFound < StandardError; end
 
   class << self 
   
@@ -33,7 +35,6 @@ class PrimeForm < ActiveRecord::Base
       seq = arg.split(/\s*,\s*/).map { |s| s.to_i } if arg.is_a?(String)
       search_prime_form(seq)
     end
-  
     
   private 
   
@@ -62,8 +63,6 @@ class PrimeForm < ActiveRecord::Base
       end    
       match_prime_form(nt, seq)
     end
-    
-    class PrimeFormNotFound < StandardError; end
     
     def match_prime_form(nf, seq)
       pf = PrimeForm.where("sequence=?", nf.map{|n| n.to_s }.join(','))

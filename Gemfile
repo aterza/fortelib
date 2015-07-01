@@ -43,6 +43,8 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'forgery', :group => :test
+
 #
 # added because of Code Climate
 #
